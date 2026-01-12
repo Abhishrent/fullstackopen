@@ -1,0 +1,14 @@
+Script started on 2026-01-10 17:49:06+05:45 [TERM="xterm-ghostty" TTY="/dev/pts/0" COLUMNS="85" LINES="40"]
+]0;abhishrent@omarchy:~/repos/fullstackopen/part12/part12-containers-applications/script-answers[?2004h
+[1;36mpart12-containers-applications/script-answers[0m [3;36mmain[0m [36m? [1m❯[0m [1;36mpart12-containers-applications/script-answers[0m [3;36mmain[0m [36m? [1m❯[0m docker container run -it ubunt u bash
+[?2004l[?2004h]0;root@3fda9bd7035b: /root@3fda9bd7035b:/# c mkdir /usr/src/app
+[?2004l[?2004h]0;root@3fda9bd7035b: /root@3fda9bd7035b:/# touch /usr/src/app. /index.js
+[?2004l[?2004h]0;root@3fda9bd7035b: /root@3fda9bd7035b:/# [Kls /usr/src/app
+[?2004lindex.js
+[?2004h]0;root@3fda9bd7035b: /root@3fda9bd7035b:/# exit
+[?2004lexit
+]0;abhishrent@omarchy:~/repos/fullstackopen/part12/part12-containers-applications/script-answers[?2004h
+[1;36mpart12-containers-applications/script-answers[0m [3;36mmain[0m [36m? [1m❯[0m [1;36mpart12-containers-applications/script-answers[0m [3;36mmain[0m [36m? [1m❯[0m exit
+[?2004lexit
+
+Script done on 2026-01-10 17:50:01+05:45 [COMMAND_EXIT_CODE="0"]
