@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 const Button = ({onClick}) => <button onClick={onClick}> Press me to get another anecdote!</button>
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often', 
@@ -15,7 +16,10 @@ const App = () => {
 
   //handler to generate the random anecdote
   const handleClick = () => {
-    const randomIndex = Math.floor(Math.random()*anecdotes.length)
+    let randomIndex
+    do {
+          randomIndex = Math.floor(Math.random()*anecdotes.length)
+    } while (randomIndex === selected)
     setSelected(randomIndex)
     console.log('anecdote printed')    
     }
