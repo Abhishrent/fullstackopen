@@ -1,58 +1,31 @@
 import { useState } from 'react'
 
-const Button = ({onClick, text}) => {
-  return <button onClick={onClick}> {text} </button>
-}
-
-const StatisticLine = ({text, value}) => {
-  return (
-  <tr>
-      <td>{text}</td>
-      <td>{value}</td>
-  </tr>
-  )
-}
-
-const Statistics = ({good, neutral, bad, total, average, positive}) => {
-  if (total===0){
-    return <div>No feedback given</div>
-  }
-  return (
-  <div>
-      <table>
-        <tbody>
-          <StatisticLine text='good' value={good} />
-          <StatisticLine text='neutral' value={neutral} />
-          <StatisticLine text='bad' value={bad} />
-          <StatisticLine text='total' value={total} />
-          <StatisticLine text='average' value={average} />
-          <StatisticLine text='positive' value={positive} />
-        </tbody>
-      </table>
-  </div>
-  )
-}
-
+const Button = ({onClick}) => <button onClick={onClick}> Press me to get another anecdote!</button>
 const App = () => {
-  const [good, setGood] = useState(0)
-  const [neutral, setNeutral] = useState(0)
-  const [bad, setBad] = useState(0)
-  const total = good+bad+neutral
-  const average = total === 0 ? 0 : (good - bad) / total;
-  const positive = (good/total)*100
+  const anecdotes = [
+    'If it hurts, do it more often', 
+    'Adding manpower to a late software project makes it later!', 
+    'The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.', 
+    'Any fool can write code that a computer can understand. Good prorammers write code that humans can understand.', 
+    'Premature optimization is the root of all evil.', 
+    'The only way to go fast, is to go well.'
+  ]
+
+  const [selected, setSelected] = useState(0)
+
+  //handler to generate the random anecdote
+  const handleClick = () => {
+    const randomIndex = Math.floor(Math.random()*anecdotes.length)
+    setSelected(randomIndex)
+    console.log('anecdote printed')    
+    }
 
   return (
-  <div>
-      <h1>give feedback</h1>
-      <Button onClick={() => setGood(good + 1)} text='good' />
-      <Button onClick={() => setNeutral(neutral+1)} text='neutral' />
-      <Button onClick={() => setBad(bad+1)} text='bad' />
-
-      <h1>statistics</h1>
-      <Statistics good={good} neutral={neutral} bad={bad} total={total} average={average} positive={positive} />
-  </div>
+    <div>
+        <Button onClick={handleClick} />
+        <p>{anecdotes[selected]}</p>
+    </div>
   )
 }
 
 export default App
-
