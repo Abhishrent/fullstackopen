@@ -1,26 +1,21 @@
 import { useState, useEffect } from 'react'
 import SearchBar from './components/Search'
 import Form from './components/Form'
-import axios from 'axios'
+import requestService from './services/requestService'
 
 const App = () => {
-
-  //fetching data from the json-server
-  useEffect(() => {
-    console.log('useEffect called')
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        console.log('promise fulfilled')
-        setPersons(response.data)
-      })
- }, [])
 
   const [filterTerm, setFilterTerm] = useState('')
   const [newPerson, setNewPerson] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [persons, setPersons] = useState([])
-
+  
+  //fetching data from the json-server
+  useEffect(() => {
+    console.log('useEffect called')
+    requestService.getAll()
+    .then(initialPeople => setPersons(initialPeople))
+ }, [])
 
   const handleInputSearchBar = (event) => {
     console.log('filter input field updated to', event.target.value)
@@ -47,11 +42,14 @@ const App = () => {
     if(hasName) {
       alert(`${newPerson} already in list!!!`)
     }else{
-    setPersons(persons.concat(personObject))
-    console.log('new person added')
+      requestService.create(personObject)
+      .then(newPersonInfo => {
+        setPersons(persons.concat(newPersonInfo))
+      })
     }
   }
-  
+
+
   return (
     <div>
         <h1>Petu's Phonebook</h1>
