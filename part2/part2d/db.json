@@ -1,9 +1,14 @@
 {
   "persons": [
     {
-      "id": "d6a6",
-      "name": "Abhishrent Khatri",
-      "number": "910823123"
+      "id": "c96a",
+      "name": "a",
+      "number": "2"
+    },
+    {
+      "id": "95f2",
+      "name": "b",
+      "number": "32345"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
