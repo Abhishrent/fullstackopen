@@ -49,6 +49,21 @@ const App = () => {
     }
   }
 
+  const handleDelete = (id) => {
+    const person = persons.find(p => p.id === id)
+    if (window.confirm(`Delete ${person.name}?`)) {
+      requestService.remove(id)
+        .then((response) => {
+          console.log('server delete response:', response)
+          setPersons(persons.filter(p => p.id !== id))
+        })
+        .catch(error => {
+          alert(`The person '${person.name}' was already deleted from the server.`)
+          setPersons(persons.filter(p => p.id !== id))
+        })
+    }
+  }
+
 
   return (
     <div>
@@ -65,7 +80,7 @@ const App = () => {
           handleInputPerson={handleInputPerson}
         />
         <h3>Numbers</h3>
-        <SearchBar persons={persons} filterTerm={filterTerm} />
+        <SearchBar persons={persons} filterTerm={filterTerm} handleDelete={handleDelete} />
     </div>
   )
 }

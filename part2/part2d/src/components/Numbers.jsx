@@ -1,5 +1,10 @@
-const Numbers = ({ number }) => {
-  return <li>{number.name} {number.number}</li>
+const Numbers = ({ number, handleDelete }) => {
+  return (
+    <li>
+      {number.name} {number.number} 
+      <button onClick={() => handleDelete(number.id)}>delete</button>
+    </li>
+  )
 }
 
-export default Numbers 
+export default Numbers

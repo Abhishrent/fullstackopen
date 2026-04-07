@@ -1,24 +1,9 @@
 {
   "persons": [
     {
-      "id": "1",
-      "name": "Abhishrent",
-      "number": "120938123"
-    },
-    {
-      "id": "2",
-      "name": "Msbooboobear",
-      "number": "113238123"
-    },
-    {
-      "id": "f41b",
-      "name": "Sandesh Prasain",
-      "number": "892374234"
-    },
-    {
-      "id": "5e2b",
-      "name": "Petu Singh",
-      "number": "234234"
+      "id": "d6a6",
+      "name": "Abhishrent Khatri",
+      "number": "910823123"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
