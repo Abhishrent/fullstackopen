@@ -49,6 +49,15 @@ app.get('/api/persons/:id', (request, response) => {
   }
 })
 
+app.post('/api/persons', (request, response) => {
+  const body = request.body
+  const id = Math.round(Math.random() * 100000000000)
+  const newPerson = {'id': id, 'name': body.name, 'number': body.number}
+  console.log('new entry: ', newPerson)
+  persons = persons.concat(newPerson)
+  response.json(newPerson)
+})
+
 app.delete('/api/persons/:id', (request, response) => {
   persons = persons.filter(person => person.id !== request.params.id)
   console.log('delete request invoked')
