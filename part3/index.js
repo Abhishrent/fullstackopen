@@ -1,22 +1,11 @@
 const express = require('express')
 const app = express()
-const morgan = require('morgan')
-
 app.use(express.json())
-app.use(morgan('tiny'))
-
-/*
-const requestLogger = (request, response, next) => {
-  console.log('Method: ', request.method)
-  console.log('Path: ', request.path)
-  console.log('Body: ', request.body)
-  console.log('---')
-  next()
-}
-
-app.use(requestLogger)
-*/
-
+var morgan = require('morgan')
+morgan.token('data', (request, response) => {
+  return JSON.stringify(request.body)
+})
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :data'))
 let persons = [
     { 
       "id": "1",
@@ -74,7 +63,7 @@ app.post('/api/persons', (request, response) => {
   }
   const id = Math.round(Math.random() * 100000000000)
   const newPerson = {'id': id, 'name': body.name, 'number': body.number}
-  console.log('new entry: ', newPerson)
+  //console.log('new entry: ', newPerson)
   persons = persons.concat(newPerson)
   response.json(newPerson)
 })
@@ -84,12 +73,6 @@ app.delete('/api/persons/:id', (request, response) => {
   console.log('delete request invoked')
   response.status(204).end()
 })
-
-const unknownEndpoint = (request, response) => {
-  response.status(404).send({error: 'unknown endpoint'})
-}
-
-app.use(unknownEndpoint)
 
 const PORT = 3001
 app.listen(PORT, () => {console.log(`app listening in port ${PORT}`)})
